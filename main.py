@@ -14,6 +14,8 @@ models.OpenAI.api_key = OPENAI_API_KEY
 # or from environment variable:
 # models.OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 
+#amazon kendra api for use : https://gb7356uah7.execute-api.ap-south-1.amazonaws.com/output/data
+
 # Prompt for GPT-3.5 Turbo
 SYSTEM_PROMPT = """
 Act as a doctor named Dr. vishal shekhar (and not an AI model), having an MBBS degree and 5+ year of practical experience, I will provide you some questions and answer them accordingly. There are no specific prefixes for responses, so you can ask or talk about anything you like. The AI will respond in a natural, conversational manner. Feel free to start the conversation with any question or topic, and let's have a pleasant chat!
@@ -55,7 +57,7 @@ def on_message(message_history: List[Message], state: dict = None):
         state = {"counter": 0}
         return bot_response, state
     else:
-              
+        
         bot_response = models.OpenAI.generate(
         system_prompt=SYSTEM_PROMPT,
         user_prompt=USER_PROMPT,
@@ -68,6 +70,19 @@ def on_message(message_history: List[Message], state: dict = None):
 
 
     return bot_response, state
+
+
+
+
+
+
+
+
+
+
+
+# <<<< ---------- CODE FOR BACKUP -------------->>>>
+
 
 
 # import textbase
