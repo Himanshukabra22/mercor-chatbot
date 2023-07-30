@@ -10,6 +10,7 @@ class OpenAI:
     def generate(
         cls,
         system_prompt: str,
+        user_prompt : str,
         message_history: list[Message],
         model="gpt-3.5-turbo",
         max_tokens=3000,
@@ -22,6 +23,7 @@ class OpenAI:
             model=model,
             messages=[
                 {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
                 *map(dict, message_history),
             ],
             temperature=temperature,
